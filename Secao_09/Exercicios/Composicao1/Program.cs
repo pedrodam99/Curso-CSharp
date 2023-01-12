@@ -55,11 +55,11 @@ namespace Composicao1
             string monthAndYear = Console.ReadLine();
             int month = int.Parse(monthAndYear.Substring(0, 2));
             int year = int.Parse(monthAndYear.Substring(3));
-            
+
             //Saida de dados
             Console.WriteLine($"Worker: {worker.Name}");
             Console.WriteLine($"Department: {worker.Department.Name}");
-            Console.WriteLine($"Income for {monthAndYear}: R$ {worker.Income(year, month).ToString("F2", CultureInfo.InvariantCulture)}");  
+            Console.WriteLine($"Income for {monthAndYear}: R$ {worker.Income(year, month).ToString("F2", CultureInfo.InvariantCulture)}");
         }
     }
 }
