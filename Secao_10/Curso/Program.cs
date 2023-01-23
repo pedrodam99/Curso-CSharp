@@ -6,11 +6,14 @@ namespace Curso
     {
         public static void Main(string[] args)
         {
-            BuninessAccount account = new BuninessAccount(123, "Pedro", 2000, 3000);
+            Account acc1 = new Account(1001, "Alex", 500.0);
+            Account acc2 = new SavingsAccount(1002, "Ana", 500.0, 0.01);
 
-            Console.WriteLine(account.Balance);
+            acc1.WithDraw(10.0);
+            acc2.WithDraw(10.0);
 
-            // account.Balance = 200.00;
+            System.Console.WriteLine(acc1.Balance);
+            System.Console.WriteLine(acc2.Balance);
         }
     }
 }
