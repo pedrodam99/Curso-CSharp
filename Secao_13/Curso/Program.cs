@@ -6,20 +6,25 @@ namespace Curso
     {
         public static void Main(string[] args)
         {
-            string path = @"\temp\file1.txt";
+            string sourcePath = @"\temp\file1.txt";
+            string targetPath = @"\temp\file2.txt";
+
             try
             {
-                using (StreamReader sr = File.OpenText(path))
+              string[] lines = File.ReadAllLines(sourcePath);
+
+              using (StreamWriter sw = File.AppendText(targetPath)) 
+              {
+                foreach (string line in lines)
                 {
-                    while (!sr.EndOfStream)
-                    {
-                        string line = sr.ReadLine();
-                        Console.WriteLine(line);
-                    }
+                    sw.WriteLine(line.ToUpper());
                 }
+              }
+              Console.WriteLine("Success file generation");
             }
             catch (IOException e)
             {
+                Console.WriteLine("An error ocurred");
                 Console.WriteLine(e.Message);
             }
         }
