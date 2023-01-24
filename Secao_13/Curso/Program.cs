@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Collections.Generic;
 
 namespace Curso
 {
@@ -6,27 +7,35 @@ namespace Curso
     {
         public static void Main(string[] args)
         {
-            string sourcePath = @"\temp\file1.txt";
-            string targetPath = @"\temp\file2.txt";
+            string path = @"\temp\folder";
 
             try
             {
-              string[] lines = File.ReadAllLines(sourcePath);
-
-              using (StreamWriter sw = File.AppendText(targetPath)) 
-              {
-                foreach (string line in lines)
+                // Listar todas as subpastas dentro do path
+                var folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
+                Console.WriteLine("Folders: ");
+                foreach (string folder in folders)
                 {
-                    sw.WriteLine(line.ToUpper());
+                    Console.WriteLine(folder);
                 }
-              }
-              Console.WriteLine("Success file generation");
+
+                // Listar arquivos de uma a partir de uma pasta
+                var files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
+                Console.WriteLine("Files");
+                foreach (string file in files)
+                {
+                    Console.WriteLine(file);
+                }
+
+                // Criar uma pasta
+                Directory.CreateDirectory(path + @"\newfolder");
             }
             catch (IOException e)
             {
-                Console.WriteLine("An error ocurred");
-                Console.WriteLine(e.Message);
+                Console.WriteLine("An error occurred");
+                Console.WriteLine("Message" + e);
             }
+
         }
     }
 }
