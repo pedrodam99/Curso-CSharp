@@ -7,35 +7,16 @@ namespace Curso
     {
         public static void Main(string[] args)
         {
-            string path = @"\temp\folder";
+            string path = @"\temp\folder\file1.txt";
 
-            try
-            {
-                // Listar todas as subpastas dentro do path
-                var folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
-                Console.WriteLine("Folders: ");
-                foreach (string folder in folders)
-                {
-                    Console.WriteLine(folder);
-                }
-
-                // Listar arquivos de uma a partir de uma pasta
-                var files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
-                Console.WriteLine("Files");
-                foreach (string file in files)
-                {
-                    Console.WriteLine(file);
-                }
-
-                // Criar uma pasta
-                Directory.CreateDirectory(path + @"\newfolder");
-            }
-            catch (IOException e)
-            {
-                Console.WriteLine("An error occurred");
-                Console.WriteLine("Message" + e);
-            }
-
+            Console.WriteLine("DirectorySeparatorChar: " + Path.DirectorySeparatorChar);
+            Console.WriteLine("PathSeparator: " + Path.PathSeparator);
+            Console.WriteLine("GetDirectoryName: " + Path.GetDirectoryName(path));
+            Console.WriteLine("GetFileName: " + Path.GetFileName(path));
+            Console.WriteLine("GetExtension: " + Path.GetExtension(path));
+            Console.WriteLine("GetFileNameWithoutExtension: " + Path.GetFileNameWithoutExtension(path));
+            Console.WriteLine("GetFullPath: " + Path.GetFullPath(path));
+            Console.WriteLine("GetTempPath: " + Path.GetTempPath());
         }
     }
 }
