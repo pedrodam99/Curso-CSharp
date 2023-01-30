@@ -1,6 +1,6 @@
-using Curso.Entities;
+using Curso.Model.Entities;
 
-namespace Curso.Services
+namespace Curso.Model.Services
 {
     class RentalService
     {

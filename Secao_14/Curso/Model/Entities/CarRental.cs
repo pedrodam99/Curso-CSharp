@@ -1,4 +1,4 @@
-namespace Curso.Entities
+namespace Curso.Model.Entities
 {
     class CarRental
     {

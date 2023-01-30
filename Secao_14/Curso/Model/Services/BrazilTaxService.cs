@@ -1,4 +1,4 @@
-namespace Curso.Services
+namespace Curso.Model.Services
 {
     class BrazilTaxService : ITaxService
     {
