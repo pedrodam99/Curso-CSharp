@@ -1,24 +1,27 @@
 ﻿using Curso.Services;
 
-namespace  Curso
+namespace Curso
 {
     internal class Program
     {
         public static void Main(string[] args)
         {
-            PrintService<int> printService = new PrintService<int>();
+            List<int> list = new List<int>();
 
-            Console.Write("How many values: ");
+            Console.Write("Enter N: ");
             int n = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < n; i++)
             {
                 int x = int.Parse(Console.ReadLine());
-                printService.AddValue(x);
+                list.Add(x);
             }
 
-            printService.Print();
-            Console.WriteLine($"First: {printService.First()}");
+            CalculationService calcService = new CalculationService();
+            
+            int max = calcService.Max(list);
+
+            Console.Write("Max: " + max);
         }
     }
 }
