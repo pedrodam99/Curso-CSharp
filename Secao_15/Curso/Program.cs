@@ -9,18 +9,18 @@ namespace Curso
     {
         public static void Main(string[] args)
         {
-            string a = "Maria";
-            string b = "Alex";
+            HashSet<string> set = new HashSet<string>();
 
-            Console.WriteLine(a.GetHashCode());
-            Console.WriteLine(b.GetHashCode());
+            set.Add("Tv");
+            set.Add("Iphone X");
+            set.Add("PS5");
 
-            Client c1 = new Client(){Name = "Maria", Email = "maria@gmail.com"};
-            Client c2 = new Client(){Name = "Alex", Email = "alex@gmail.com"};
+            Console.WriteLine(set.Contains("Tv"));
 
-            Console.WriteLine(c1.Equals(c2));
-            Console.WriteLine(c1.GetHashCode());
-            Console.WriteLine(c2.GetHashCode());
+            foreach (string p in set)
+            {
+                Console.WriteLine(p);
+            }
         }
     }
 }
