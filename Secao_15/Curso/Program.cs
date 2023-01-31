@@ -9,24 +9,18 @@ namespace Curso
     {
         public static void Main(string[] args)
         {
-            List<Product> list = new List<Product>();
+            string a = "Maria";
+            string b = "Alex";
 
-            Console.Write("Enter N: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine(a.GetHashCode());
+            Console.WriteLine(b.GetHashCode());
 
-            for (int i = 0; i < n; i++)
-            {
-                string[] vect = Console.ReadLine().Split(',');
-                string name = vect[0];
-                double price = double.Parse(vect[1], CultureInfo.InvariantCulture);
-                list.Add(new Product(name, price));
-            }
+            Client c1 = new Client(){Name = "Maria", Email = "maria@gmail.com"};
+            Client c2 = new Client(){Name = "Alex", Email = "alex@gmail.com"};
 
-            CalculationService calcService = new CalculationService();
-            
-            Product max = calcService.Max(list);
-
-            Console.Write("Max: " + max);
+            Console.WriteLine(c1.Equals(c2));
+            Console.WriteLine(c1.GetHashCode());
+            Console.WriteLine(c2.GetHashCode());
         }
     }
 }
