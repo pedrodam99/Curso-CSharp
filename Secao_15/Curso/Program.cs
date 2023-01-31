@@ -1,4 +1,7 @@
 ﻿using Curso.Services;
+using Curso.Entities;
+
+using System.Globalization;
 
 namespace Curso
 {
@@ -6,20 +9,22 @@ namespace Curso
     {
         public static void Main(string[] args)
         {
-            List<int> list = new List<int>();
+            List<Product> list = new List<Product>();
 
             Console.Write("Enter N: ");
             int n = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < n; i++)
             {
-                int x = int.Parse(Console.ReadLine());
-                list.Add(x);
+                string[] vect = Console.ReadLine().Split(',');
+                string name = vect[0];
+                double price = double.Parse(vect[1], CultureInfo.InvariantCulture);
+                list.Add(new Product(name, price));
             }
 
             CalculationService calcService = new CalculationService();
             
-            int max = calcService.Max(list);
+            Product max = calcService.Max(list);
 
             Console.Write("Max: " + max);
         }
