@@ -16,16 +16,16 @@ namespace Curso
             list.Add(new Product("Tablet", 350.0));
             list.Add(new Product("HD Case", 80.0));
 
-            list.RemoveAll(ProductTest);
-            foreach (var p in list)
+            list.ForEach(UpdatePrice);
+            foreach (Product p in list)
             {
                 Console.WriteLine(p);
             }
         }
 
-        public static bool ProductTest(Product p)
+        public static void UpdatePrice(Product p)
         {
-            return p.Price >= 100.0;
-        } 
+            p.Price += p.Price * 0.1;
+        }
     }
 }
