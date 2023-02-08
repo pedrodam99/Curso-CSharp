@@ -1,6 +1,8 @@
 ﻿using Curso.Services;
 using Curso.Entities;
 
+using System.Linq;
+
 namespace Curso
 {
 
@@ -16,16 +18,20 @@ namespace Curso
             list.Add(new Product("Tablet", 350.0));
             list.Add(new Product("HD Case", 80.0));
 
-            list.ForEach(UpdatePrice);
-            foreach (Product p in list)
+            
+            Func<Product, string> func = NameUpper;
+
+            List<string> newList = list.Select(func).ToList();
+
+            foreach (string s in newList)
             {
-                Console.WriteLine(p);
+                Console.WriteLine(s);
             }
         }
 
-        public static void UpdatePrice(Product p)
+        static string NameUpper(Product p)
         {
-            p.Price += p.Price * 0.1;
+            return p.Name.ToUpper();
         }
     }
 }
