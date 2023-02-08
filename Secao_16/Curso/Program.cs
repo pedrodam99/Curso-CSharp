@@ -1,4 +1,5 @@
 ﻿using Curso.Services;
+using Curso.Entities;
 
 namespace Curso
 {
@@ -8,13 +9,23 @@ namespace Curso
     {
         public static void Main(string[] args)
         {
-            double a = 10;
-            double b = 12;
+            List<Product> list = new List<Product>();
 
-            BinaryNumericOperation op = CalculationService.ShowSum;
-            op+= CalculationService.ShowMax;
+            list.Add(new Product("TV", 900.0));
+            list.Add(new Product("Mouse", 50.0));
+            list.Add(new Product("Tablet", 350.0));
+            list.Add(new Product("HD Case", 80.0));
 
-            op(a, b);
+            list.RemoveAll(ProductTest);
+            foreach (var p in list)
+            {
+                Console.WriteLine(p);
+            }
         }
+
+        public static bool ProductTest(Product p)
+        {
+            return p.Price >= 100.0;
+        } 
     }
 }
