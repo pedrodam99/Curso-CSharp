@@ -11,27 +11,20 @@ namespace Curso
     {
         public static void Main(string[] args)
         {
-            List<Product> list = new List<Product>();
+            // Define the data source
+            int[] numbers = new int[] { 2, 3, 4, 5 };
 
-            list.Add(new Product("TV", 900.0));
-            list.Add(new Product("Mouse", 50.0));
-            list.Add(new Product("Tablet", 350.0));
-            list.Add(new Product("HD Case", 80.0));
+            // Define query expression
+            IEnumerable<int> result = numbers
+                .Where(e => e % 2 == 0)
+                .Select(e => e * 10);
 
-            
-            Func<Product, string> func = NameUpper;
-
-            List<string> newList = list.Select(func).ToList();
-
-            foreach (string s in newList)
+            // Execute the query
+            foreach (var element in result)
             {
-                Console.WriteLine(s);
+                Console.WriteLine(element);
             }
-        }
 
-        static string NameUpper(Product p)
-        {
-            return p.Name.ToUpper();
         }
     }
 }
